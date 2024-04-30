@@ -1,10 +1,10 @@
 const express = require('express')
-const esquemadelusuario = require("../models/usuarios")
+const esquemaderopa = require('../models/ropas');
 const router = express.Router()
 
 // crear usuario 
-router.post('/usuarios', (req, res) => {
-    const user = esquemadelusuario(req.body)
+router.post('/ropas', (req, res) => {
+    const user = esquemaderopa(req.body)
     user
       .save()
       .then((data)=> res.json(data))
@@ -12,35 +12,35 @@ router.post('/usuarios', (req, res) => {
 })
 
 //obtener todos los usuarios
-router.get('/usuarios', (req, res) => {
-    esquemadelusuario
+router.get('/ropas', (req, res) => {
+    esquemaderopa
       .find()
       .then((data)=> res.json(data))
       .catch((error)=> res.json({message: error}))
 })
 
 //obtener un usuario especifico 
-router.get('/usuarios/:id', (req, res) => {
+router.get('/ropas/:id', (req, res) => {
     const {id} = req.params
-    esquemadelusuario
-      .findById(id)
+    esquemaderopa
+      .findById({id:id})
       .then((data)=> res.json(data))
       .catch((error)=> res.json({message: error}))
 })
 
 //actualizar un usuario
-router.put('/usuarios/:id', (req, res) => {
-    const {nombre, gmail, prenda_que_compra, marca, cantidad, total, id} = req.body
-    esquemadelusuario
-      .updateOne({ id: id}, { $set: {nombre, gmail, prenda_que_compra, marca, cantidad, total, id} })
+router.put('/ropas/:id', (req, res) => {
+    const {prenda, marca, cantidad, precio_por_unidad, id} = req.body
+    esquemaderopa
+      .updateOne({ id: id}, { $set: {prenda, marca, cantidad, precio_por_unidad, id} })
       .then((data)=> res.json(data))
       .catch((error)=> res.json({message: error}))
 })
 
 //eliminar un usuario
-router.delete('/usuarios/:id', (req, res) => {
+router.delete('/ropas/:id', (req, res) => {
   const { id } = req.params
-  esquemadelusuario
+  esquemaderopa
   .deleteOne({ id: id })
   .then((data) => res.json(data))
   .catch((err) => res.json({message:error}))

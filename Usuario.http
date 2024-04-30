@@ -1,0 +1,36 @@
+###
+POST http://localhost:9000/api/usuarios HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Lucas",
+    "gmail": "Lucas@gmail.com",
+    "prenda_que_compra":"remera",
+    "marca":"adidas",
+    "cantidad":"2",
+    "total":"$10000",
+    "id":"1"
+}
+
+###
+GET http://localhost:9000/api/usuarios HTTP/1.1
+
+###
+GET http://localhost:9000/api/usuarios/663149c01c7766fdbc153bba HTTP/1.1
+
+###
+PUT http://localhost:9000/api/usuarios/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Lucas",
+    "gmail": "Lucas@gmail.com",
+    "prenda_que_compra":"remera",
+    "marca":"adidas",
+    "cantidad":"4",
+    "total":"$20000",
+    "id":"1"
+}
+
+###
+DELETE http://localhost:9000/api/usuarios/1 HTTP/1.1

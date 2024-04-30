@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const usuarioroutes = require ("./routes/usuario")
+const roparoutes = require("./routes/ropa")
 
 const app = express()
 
@@ -10,7 +11,7 @@ const port = process.env.PORT || 9000
 //El middleware es un software con el que las diferentes aplicaciones se comunican entre sí
 app.use(express.json())
 app.use('/api',usuarioroutes)
-
+app.use('/api',roparoutes)
 
 //routes
 
